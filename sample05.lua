@@ -1185,25 +1185,151 @@ end)
 
 ;
 -- END --
-local _c15w_call = require("sample02")
-stat = _c15w_call
-local _1o58_call = stat["sum"](List(1,3,5,7))
-local _5xud_call = print(_1o58_call)
-local _banh_cond
+function tree(i,u,n)
+  -- ::LINE_4_COLUMN_3::
+  local _9imp_let
+  do
+    local d = (1 / u)
+    -- ::LINE_5_COLUMN_5::
+    local _x4o6_cond
+    do
+      if (n > 0) then
+        -- ::LINE_nil_COLUMN_nil::
+        local _tsof_call = tree((i * u),u,(n - 1))
+        local _2e6z_call = tree((i * d),u,(n - 1))
+        _x4o6_cond = List(i,_tsof_call,_2e6z_call)
+        goto _x4o6_cond
+      end
+      if true then
+        -- ::LINE_10_COLUMN_12::
+        
+        _x4o6_cond = nil
+        goto _x4o6_cond
+      end
+    ::_x4o6_cond::
+    end
+    _9imp_let = _x4o6_cond
+  end
+  return _9imp_let
+end
+function at(tree)
+  -- ::LINE_13_COLUMN_3::
+  
+  return tree[1]
+end
+function up(tree)
+  -- ::LINE_16_COLUMN_3::
+  local _nhor_cond
+  do
+    if tree:cdr() then
+      -- ::LINE_17_COLUMN_17::
+      
+      _nhor_cond = tree:cdr()[1]
+      goto _nhor_cond
+    end
+    if true then
+      -- ::LINE_18_COLUMN_10::
+      
+      _nhor_cond = nil
+      goto _nhor_cond
+    end
+  ::_nhor_cond::
+  end
+  return _nhor_cond
+end
+function down(tree)
+  -- ::LINE_21_COLUMN_3::
+  local _kskm_cond
+  do
+    if (nil == tree:cdr()) then
+      -- ::LINE_22_COLUMN_25::
+      
+      _kskm_cond = nil
+      goto _kskm_cond
+    end
+    if tree:cdr():cdr() then
+      -- ::LINE_23_COLUMN_23::
+      
+      _kskm_cond = tree:cdr():cdr()[1]
+      goto _kskm_cond
+    end
+    if true then
+      -- ::LINE_24_COLUMN_10::
+      
+      _kskm_cond = nil
+      goto _kskm_cond
+    end
+  ::_kskm_cond::
+  end
+  return _kskm_cond
+end
+function draw__c45__row(tree)
+  -- ::LINE_27_COLUMN_3::
+  local _glte_cond
+  do
+    if (nil == tree) then
+      -- ::LINE_28_COLUMN_19::
+      
+      _glte_cond = ""
+      goto _glte_cond
+    end
+    if true then
+      -- ::LINE_30_COLUMN_7::
+      local _s3ch_call = at(tree)
+      local _wzul_call = tostring(_s3ch_call)
+      local _npr0_call = up(tree)
+      local _mvmd_call = draw__c45__row(_npr0_call)
+      _glte_cond = (_wzul_call .. "\t- " .. _mvmd_call)
+      goto _glte_cond
+    end
+  ::_glte_cond::
+  end
+  return _glte_cond
+end
+function draw(tree,indent)
+  -- ::LINE_36_COLUMN_3::
+  local _ryh5_cond
+  do
+    if (nil == tree) then
+      -- ::LINE_37_COLUMN_19::
+      
+      _ryh5_cond = ""
+      goto _ryh5_cond
+    end
+    if true then
+      -- ::LINE_38_COLUMN_11::
+      local _xa13_call = draw__c45__row(tree)
+      local _xhq8_call = down(tree)
+      local _j5p7_call = draw(_xhq8_call)
+      _ryh5_cond = (_xa13_call .. "\n" .. _j5p7_call)
+      goto _ryh5_cond
+    end
+  ::_ryh5_cond::
+  end
+  return _ryh5_cond
+end
+local _vjbo_let
 do
-  if 1 then
-    -- ::LINE_7_COLUMN_7::
-    local _hz3k_call = print(1)
-    _banh_cond = _hz3k_call
-    goto _banh_cond
-  end
-  if true then
-    -- ::LINE_7_COLUMN_17::
-    local _qzgo_call = print(0)
-    _banh_cond = _qzgo_call
-    goto _banh_cond
-  end
-::_banh_cond::
+  local period = 0.5
+  local count__c40__period__c41__ = 2
+  local volatility = 0.32
+  local _hqr5_call = math["sqrt"](period)
+  local _3hmz_call = math["exp"]((volatility * _hqr5_call))
+  local u = _3hmz_call
+  local d = (1 / u)
+  local _v6wh_call = math["exp"]((0.5 * 0.1))
+  local r = _v6wh_call
+  local dividend = 1
+  local PV__c40__dividend__c41__ = (dividend / r)
+  local price_0 = 70
+  local price_0__c45__PV__c40__dividend__c41__ = (price_0 - PV__c40__dividend__c41__)
+  local p0 = price_0__c45__PV__c40__dividend__c41__
+  -- ::LINE_65_COLUMN_3::
+  local _oizh_call = tree(p0,u,3)
+  local _p2xy_call = draw(_oizh_call)
+  local _1q8j_call = print(_p2xy_call)
+  local _4dfl_call = print(List(1,2,3,4))
+  _vjbo_let = _4dfl_call
 end
 
 return _ENV

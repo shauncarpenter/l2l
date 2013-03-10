@@ -1187,23 +1187,23 @@ end)
 -- END --
 function sum(list)
   -- ::LINE_7_COLUMN_3::
-  local _q4mn_cond
+  local _amb7_cond
   do
     if list then
       -- ::LINE_7_COLUMN_12::
-      local _2ikq_call = sum(list:cdr())
-      _q4mn_cond = (list[1] + _2ikq_call)
-      goto _q4mn_cond
+      local _0zk3_call = sum(list:cdr())
+      _amb7_cond = (list[1] + _0zk3_call)
+      goto _amb7_cond
     end
     if true then
       -- ::LINE_7_COLUMN_43::
       
-      _q4mn_cond = 0
-      goto _q4mn_cond
+      _amb7_cond = 0
+      goto _amb7_cond
     end
-  ::_q4mn_cond::
+  ::_amb7_cond::
   end
-  return _q4mn_cond
+  return _amb7_cond
 end
 
 return _ENV

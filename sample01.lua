@@ -1185,143 +1185,143 @@ end)
 
 ;
 -- END --
-local _z042_call = print("\n--- Example 1 ---\n")
+local _dv77_call = print("\n--- Example 1 ---\n")
 function __c33__(n)
   -- ::LINE_6_COLUMN_3::
-  local _whe4_cond
+  local _kb6s_cond
   do
     if (0 == n) then
       -- ::LINE_6_COLUMN_18::
       
-      _whe4_cond = 1
-      goto _whe4_cond
+      _kb6s_cond = 1
+      goto _kb6s_cond
     end
     if (1 == n) then
       -- ::LINE_7_COLUMN_18::
       
-      _whe4_cond = 1
-      goto _whe4_cond
+      _kb6s_cond = 1
+      goto _kb6s_cond
     end
     if true then
       -- ::LINE_8_COLUMN_15::
-      local _jklv_call = __c33__((n - 1))
-      _whe4_cond = (n * _jklv_call)
-      goto _whe4_cond
+      local _k22c_call = __c33__((n - 1))
+      _kb6s_cond = (n * _k22c_call)
+      goto _kb6s_cond
     end
-  ::_whe4_cond::
+  ::_kb6s_cond::
   end
-  return _whe4_cond
+  return _kb6s_cond
 end
-local _wdvw_call = __c33__(100)
-local _ch6k_call = print(_wdvw_call)
-local _1u1a_call = print("\n--- Example 2 ---\n")
+local _zppq_call = __c33__(100)
+local _wuh7_call = print(_zppq_call)
+local _lix3_call = print("\n--- Example 2 ---\n")
 function __c206____c163__()
   -- ::LINE_17_COLUMN_14::
-  local _y5d7_call = print("ΣΣΣ")
-  return _y5d7_call
+  local _2ysq_call = print("ΣΣΣ")
+  return _2ysq_call
 end
-local _u1y1_call = __c206____c163__()
-local _9tfx_call = print("\n--- Example 3 ---\n")
+local _po3i_call = __c206____c163__()
+local _y7b2_call = print("\n--- Example 3 ---\n")
 hello__c45__world = "hello gibberish world"
-local _k9rd_call = table["concat"](({string["gsub"](hello__c45__world,"gibberish ","")})," ")
-local _geyw_call = print(_k9rd_call)
-local _aayj_call = print("\n--- Example 4 ---\n")
-local _ftlq_call = map((function(x)
+local _apts_call = table["concat"](({string["gsub"](hello__c45__world,"gibberish ","")})," ")
+local _r73r_call = print(_apts_call)
+local _wvzn_call = print("\n--- Example 4 ---\n")
+local _zicj_call = map((function(x)
   -- ::LINE_40_COLUMN_38::
   
   return (x * 5)
 end),List(1,2,3))
-local _wzgg_call = map(print,List(1,2,3,_ftlq_call))
-local _umpi_call = print("\n--- Example 5 ---\n")
-local _y299_let
+local _y8bg_call = map(print,List(1,2,3,_zicj_call))
+local _29sp_call = print("\n--- Example 5 ---\n")
+local _gmew_let
 do
   local a = (1 + 2)
   local b = (3 + 4)
   -- ::LINE_55_COLUMN_3::
-  local _9pqu_call = print(a)
-  local _7s6m_call = print(b)
-  _y299_let = _7s6m_call
+  local _17ni_call = print(a)
+  local _7wu0_call = print(b)
+  _gmew_let = _7wu0_call
 end
-local _h6ll_call = print("\n--- Example 6 ---\n")
-local _ygvw_call = ({["write"] = (function(self,x)
+local _1dij_call = print("\n--- Example 6 ---\n")
+local _de6d_call = ({["write"] = (function(self,x)
   -- ::LINE_66_COLUMN_35::
-  local _q8lc_call = print(x)
-  return _q8lc_call
+  local _k659_call = print(x)
+  return _k659_call
 end)}):write("hello-world")
-local _l694_call = print("\n--- Example 7 ---\n")
-local _0pb5_call = (function(x,y)
+local _4qgz_call = print("\n--- Example 7 ---\n")
+local _xqwd_call = (function(x,y)
   -- ::LINE_75_COLUMN_23::
   
   return (x + y)
 end)(10,20)
-local _30fd_call = print(_0pb5_call)
-local _sb1g_call = print("\n--- Example 8 ---\n")
-local _r73l_let
+local _ru32_call = print(_xqwd_call)
+local _d6t5_call = print("\n--- Example 8 ---\n")
+local _2xuo_let
 do
   local a = (7 * 8)
   -- ::LINE_85_COLUMN_3::
-  local _d4iq_call = map(print,({1,2,a,4}))
-  _r73l_let = _d4iq_call
+  local _ldyo_call = map(print,({1,2,a,4}))
+  _2xuo_let = _ldyo_call
 end
-local _x7w0_call = print("\n--- Example 9 ---\n")
-local _ibbn_let
+local _dwvd_call = print("\n--- Example 9 ---\n")
+local _o7wy_let
 do
-  local dict = ({["3"] = 4,[1] = 2,["a"] = "b"})
+  local dict = ({["a"] = "b",["3"] = 4,[1] = 2})
   -- ::LINE_98_COLUMN_3::
-  local _lzc7_call = print(dict["a"],"b")
-  local _zv1a_call = print(dict["a"],"b")
-  local _zcag_call = print(dict[1],2)
-  local _ymrg_call = print(dict["3"],4)
-  _ibbn_let = _ymrg_call
+  local _nljh_call = print(dict["a"],"b")
+  local _j7bd_call = print(dict["a"],"b")
+  local _7wq6_call = print(dict[1],2)
+  local _hhw8_call = print(dict["3"],4)
+  _o7wy_let = _hhw8_call
 end
-local _t9mk_call = print("\n--- Example 10 ---\n")
+local _x5er_call = print("\n--- Example 10 ---\n")
 
 -- This is a comment
-local _w40b_call = print("\n--- Example 11 ---\n")
-local _lyoq_call = print("\n--- Did you see what was printed while compiling? ---\n")
+local _e61s_call = print("\n--- Example 11 ---\n")
+local _lhic_call = print("\n--- Did you see what was printed while compiling? ---\n")
 -- ::LINE_150_COLUMN_3::
-local _t2y5_call = print(1)
-local _nl6t_call = print(2)
-_bepo_do = _nl6t_call
-local _refw_call = print("\n--- Example 12 ---\n")
-local _3su2_let
+local _oeor_call = print(1)
+local _a9c6_call = print(2)
+_wvo2_do = _a9c6_call
+local _2iua_call = print("\n--- Example 12 ---\n")
+local _u1bv_let
 do
   local a = 2
   -- ::LINE_177_COLUMN_3::
-  local _n964_cond
+  local _f2y7_cond
   do
     if ("1" == a) then
       -- ::LINE_177_COLUMN_18::
-      local _94fc_call = print("a == 1")
-      _n964_cond = _94fc_call
-      goto _n964_cond
+      local _gd67_call = print("a == 1")
+      _f2y7_cond = _gd67_call
+      goto _f2y7_cond
     end
     if true then
       -- ::LINE_178_COLUMN_5::
-      local _sgic_cond
+      local _xsy8_cond
       do
         if (2 == a) then
           -- ::LINE_178_COLUMN_18::
-          local _xhyq_call = print("a == 2")
-          _sgic_cond = _xhyq_call
-          goto _sgic_cond
+          local _grdd_call = print("a == 2")
+          _xsy8_cond = _grdd_call
+          goto _xsy8_cond
         end
         if true then
           -- ::LINE_178_COLUMN_35::
-          local _hott_call = print("a != 2")
-          _sgic_cond = _hott_call
-          goto _sgic_cond
+          local _06dc_call = print("a != 2")
+          _xsy8_cond = _06dc_call
+          goto _xsy8_cond
         end
-      ::_sgic_cond::
+      ::_xsy8_cond::
       end
-      _n964_cond = _sgic_cond
-      goto _n964_cond
+      _f2y7_cond = _xsy8_cond
+      goto _f2y7_cond
     end
-  ::_n964_cond::
+  ::_f2y7_cond::
   end
-  _3su2_let = _n964_cond
+  _u1bv_let = _f2y7_cond
 end
-local _5jq7_call = tostring((1 + 2))
-local _oz6t_call = print((_5jq7_call .. "4"))
+local _uset_call = tostring((1 + 2))
+local _l689_call = print((_uset_call .. "4"))
 
 return _ENV
