@@ -5,7 +5,7 @@ Description
 -----------
 A object-oriented, unicode-enabled lisp that compiles to and runs as fast as Lua. Equipped with macros and compile-time compiler manipulation. Comes with all built-in Lua functions. 
 
-Requires Lua 5.2!
+Requires Lua JIT 2.0.1!
 
 Warning
 -------
