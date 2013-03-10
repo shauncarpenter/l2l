@@ -1,7 +1,45 @@
 
-local ENV = _ENV
-local L2L = setmetatable({}, {__index = ENV})
-_ENV = L2L
+-- wraps l2l in a very thin wrapper to support the generated code unchanged
+-- known issues: empty lists are parsed incorrectly
+
+local L2L = setmetatable({}, {__index = _G})
+local _ENV = L2L
+ 
+setfenv(1, setmetatable({}, {
+    __index = function(s, k)
+    return _ENV[k]
+  end,
+    __newindex = function(s, k, v)
+        _ENV[k] = v
+    end,
+  __pairs = function(s)
+    return pairs(_ENV)
+  end
+}))
+
+local _pairs, _ipairs = pairs, ipairs
+
+local function pairs(o)
+  local mt = getmetatable(o)
+  if mt ~= nil and mt.__pairs then
+    return mt.__pairs(o)
+  else
+    return _pairs(o)
+  end
+end
+
+local function ipairs(o)
+  local mt = getmetatable(o)
+  if mt ~= nil and mt.__ipairs then
+    return mt.__ipairs(o)
+  else
+    return _ipairs(o)
+  end
+end
+
+local function load(ld, source, mode, env)
+  return setfenv(loadstring(ld), env)
+end
 
 -- Initialize random variables
 math.randomseed(os.time()*os.clock())
@@ -743,7 +781,7 @@ function genblock(iterable, parameters)
   end
   local block = {}
   META.block:push(block)
-  local scope;
+  local scope
   if not uid then
     scope = Scope(parameters, META.scope:peek())
     local _ENV  = setmetatable({}, {__index = META._ENV:peek()})
@@ -1147,25 +1185,25 @@ end)
 
 ;
 -- END --
-local _x1k4_call = require("sample02")
-stat = _x1k4_call
-local _8x47_call = stat["sum"](List(1,3,5,7))
-local _hbyx_call = print(_8x47_call)
-local _xv4r_cond
+local _ewtr_call = require("sample02")
+stat = _ewtr_call
+local _3jcx_call = stat["sum"](List(1,3,5,7))
+local _7t2y_call = print(_3jcx_call)
+local _okjs_cond
 do
   if 1 then
     -- ::LINE_7_COLUMN_7::
-    local _g9vm_call = print(1)
-    _xv4r_cond = _g9vm_call
-    goto _xv4r_cond
+    local _6ruu_call = print(1)
+    _okjs_cond = _6ruu_call
+    goto _okjs_cond
   end
   if true then
     -- ::LINE_7_COLUMN_17::
-    local _qrri_call = print(0)
-    _xv4r_cond = _qrri_call
-    goto _xv4r_cond
+    local _tzpz_call = print(0)
+    _okjs_cond = _tzpz_call
+    goto _okjs_cond
   end
-::_xv4r_cond::
+::_okjs_cond::
 end
 
 return _ENV

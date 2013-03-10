@@ -1,7 +1,45 @@
 
-local ENV = _ENV
-local L2L = setmetatable({}, {__index = ENV})
-_ENV = L2L
+-- wraps l2l in a very thin wrapper to support the generated code unchanged
+-- known issues: empty lists are parsed incorrectly
+
+local L2L = setmetatable({}, {__index = _G})
+local _ENV = L2L
+ 
+setfenv(1, setmetatable({}, {
+    __index = function(s, k)
+    return _ENV[k]
+  end,
+    __newindex = function(s, k, v)
+        _ENV[k] = v
+    end,
+  __pairs = function(s)
+    return pairs(_ENV)
+  end
+}))
+
+local _pairs, _ipairs = pairs, ipairs
+
+local function pairs(o)
+  local mt = getmetatable(o)
+  if mt ~= nil and mt.__pairs then
+    return mt.__pairs(o)
+  else
+    return _pairs(o)
+  end
+end
+
+local function ipairs(o)
+  local mt = getmetatable(o)
+  if mt ~= nil and mt.__ipairs then
+    return mt.__ipairs(o)
+  else
+    return _ipairs(o)
+  end
+end
+
+local function load(ld, source, mode, env)
+  return setfenv(loadstring(ld), env)
+end
 
 -- Initialize random variables
 math.randomseed(os.time()*os.clock())
@@ -743,7 +781,7 @@ function genblock(iterable, parameters)
   end
   local block = {}
   META.block:push(block)
-  local scope;
+  local scope
   if not uid then
     scope = Scope(parameters, META.scope:peek())
     local _ENV  = setmetatable({}, {__index = META._ENV:peek()})
@@ -1149,23 +1187,23 @@ end)
 -- END --
 function sum(list)
   -- ::LINE_7_COLUMN_3::
-  local _77ya_cond
+  local _q4mn_cond
   do
     if list then
       -- ::LINE_7_COLUMN_12::
-      local _gwqp_call = sum(list:cdr())
-      _77ya_cond = (list[1] + _gwqp_call)
-      goto _77ya_cond
+      local _2ikq_call = sum(list:cdr())
+      _q4mn_cond = (list[1] + _2ikq_call)
+      goto _q4mn_cond
     end
     if true then
       -- ::LINE_7_COLUMN_43::
       
-      _77ya_cond = 0
-      goto _77ya_cond
+      _q4mn_cond = 0
+      goto _q4mn_cond
     end
-  ::_77ya_cond::
+  ::_q4mn_cond::
   end
-  return _77ya_cond
+  return _q4mn_cond
 end
 
 return _ENV
