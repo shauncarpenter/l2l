@@ -1,7 +1,6 @@
 #! /usr/bin/env luajit
 
 -- wraps l2l in a very thin wrapper to support the generated code unchanged
--- known issues: empty lists are parsed incorrectly
 
 local L2L = setmetatable({}, {__index = _G})
 local _ENV = L2L
