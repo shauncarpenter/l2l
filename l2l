@@ -1,4 +1,4 @@
-#! /usr/local/bin/lua
+#! /usr/bin/env lua
 
 local ENV = _ENV
 local L2L = setmetatable({}, {__index = ENV})
