@@ -1,7 +1,45 @@
 
-local ENV = _ENV
-local L2L = setmetatable({}, {__index = ENV})
-_ENV = L2L
+-- wraps l2l in a very thin wrapper to support the generated code unchanged
+-- known issues: empty lists are parsed incorrectly
+
+local L2L = setmetatable({}, {__index = _G})
+local _ENV = L2L
+ 
+setfenv(1, setmetatable({}, {
+    __index = function(s, k)
+    return _ENV[k]
+  end,
+    __newindex = function(s, k, v)
+        _ENV[k] = v
+    end,
+  __pairs = function(s)
+    return pairs(_ENV)
+  end
+}))
+
+local _pairs, _ipairs = pairs, ipairs
+
+local function pairs(o)
+  local mt = getmetatable(o)
+  if mt ~= nil and mt.__pairs then
+    return mt.__pairs(o)
+  else
+    return _pairs(o)
+  end
+end
+
+local function ipairs(o)
+  local mt = getmetatable(o)
+  if mt ~= nil and mt.__ipairs then
+    return mt.__ipairs(o)
+  else
+    return _ipairs(o)
+  end
+end
+
+local function load(ld, source, mode, env)
+  return setfenv(loadstring(ld), env)
+end
 
 -- Initialize random variables
 math.randomseed(os.time()*os.clock())
@@ -1149,30 +1187,30 @@ end)
 -- END --
 function tree(i,u,n)
   -- ::LINE_4_COLUMN_3::
-  local _6kgb_let
+  local _9imp_let
   do
     local d = (1 / u)
     -- ::LINE_5_COLUMN_5::
-    local _qwmw_cond
+    local _x4o6_cond
     do
       if (n > 0) then
         -- ::LINE_nil_COLUMN_nil::
-        local _6pt9_call = tree((i * u),u,(n - 1))
-        local _u97o_call = tree((i * d),u,(n - 1))
-        _qwmw_cond = List(i,_6pt9_call,_u97o_call)
-        goto _qwmw_cond
+        local _tsof_call = tree((i * u),u,(n - 1))
+        local _2e6z_call = tree((i * d),u,(n - 1))
+        _x4o6_cond = List(i,_tsof_call,_2e6z_call)
+        goto _x4o6_cond
       end
       if true then
         -- ::LINE_10_COLUMN_12::
         
-        _qwmw_cond = nil
-        goto _qwmw_cond
+        _x4o6_cond = nil
+        goto _x4o6_cond
       end
-    ::_qwmw_cond::
+    ::_x4o6_cond::
     end
-    _6kgb_let = _qwmw_cond
+    _9imp_let = _x4o6_cond
   end
-  return _6kgb_let
+  return _9imp_let
 end
 function at(tree)
   -- ::LINE_13_COLUMN_3::
@@ -1181,117 +1219,117 @@ function at(tree)
 end
 function up(tree)
   -- ::LINE_16_COLUMN_3::
-  local _6ztl_cond
+  local _nhor_cond
   do
     if tree:cdr() then
       -- ::LINE_17_COLUMN_17::
       
-      _6ztl_cond = tree:cdr()[1]
-      goto _6ztl_cond
+      _nhor_cond = tree:cdr()[1]
+      goto _nhor_cond
     end
     if true then
       -- ::LINE_18_COLUMN_10::
       
-      _6ztl_cond = nil
-      goto _6ztl_cond
+      _nhor_cond = nil
+      goto _nhor_cond
     end
-  ::_6ztl_cond::
+  ::_nhor_cond::
   end
-  return _6ztl_cond
+  return _nhor_cond
 end
 function down(tree)
   -- ::LINE_21_COLUMN_3::
-  local _gmhx_cond
+  local _kskm_cond
   do
     if (nil == tree:cdr()) then
       -- ::LINE_22_COLUMN_25::
       
-      _gmhx_cond = nil
-      goto _gmhx_cond
+      _kskm_cond = nil
+      goto _kskm_cond
     end
     if tree:cdr():cdr() then
       -- ::LINE_23_COLUMN_23::
       
-      _gmhx_cond = tree:cdr():cdr()[1]
-      goto _gmhx_cond
+      _kskm_cond = tree:cdr():cdr()[1]
+      goto _kskm_cond
     end
     if true then
       -- ::LINE_24_COLUMN_10::
       
-      _gmhx_cond = nil
-      goto _gmhx_cond
+      _kskm_cond = nil
+      goto _kskm_cond
     end
-  ::_gmhx_cond::
+  ::_kskm_cond::
   end
-  return _gmhx_cond
+  return _kskm_cond
 end
 function draw__c45__row(tree)
   -- ::LINE_27_COLUMN_3::
-  local _zxwg_cond
+  local _glte_cond
   do
     if (nil == tree) then
       -- ::LINE_28_COLUMN_19::
       
-      _zxwg_cond = ""
-      goto _zxwg_cond
+      _glte_cond = ""
+      goto _glte_cond
     end
     if true then
       -- ::LINE_30_COLUMN_7::
-      local _qdn7_call = at(tree)
-      local _oqu4_call = tostring(_qdn7_call)
-      local _kqeg_call = up(tree)
-      local _4utj_call = draw__c45__row(_kqeg_call)
-      _zxwg_cond = (_oqu4_call .. "\t- " .. _4utj_call)
-      goto _zxwg_cond
+      local _s3ch_call = at(tree)
+      local _wzul_call = tostring(_s3ch_call)
+      local _npr0_call = up(tree)
+      local _mvmd_call = draw__c45__row(_npr0_call)
+      _glte_cond = (_wzul_call .. "\t- " .. _mvmd_call)
+      goto _glte_cond
     end
-  ::_zxwg_cond::
+  ::_glte_cond::
   end
-  return _zxwg_cond
+  return _glte_cond
 end
 function draw(tree,indent)
   -- ::LINE_36_COLUMN_3::
-  local _lxo6_cond
+  local _ryh5_cond
   do
     if (nil == tree) then
       -- ::LINE_37_COLUMN_19::
       
-      _lxo6_cond = ""
-      goto _lxo6_cond
+      _ryh5_cond = ""
+      goto _ryh5_cond
     end
     if true then
       -- ::LINE_38_COLUMN_11::
-      local _0lz7_call = draw__c45__row(tree)
-      local _s60o_call = down(tree)
-      local _tr51_call = draw(_s60o_call)
-      _lxo6_cond = (_0lz7_call .. "\n" .. _tr51_call)
-      goto _lxo6_cond
+      local _xa13_call = draw__c45__row(tree)
+      local _xhq8_call = down(tree)
+      local _j5p7_call = draw(_xhq8_call)
+      _ryh5_cond = (_xa13_call .. "\n" .. _j5p7_call)
+      goto _ryh5_cond
     end
-  ::_lxo6_cond::
+  ::_ryh5_cond::
   end
-  return _lxo6_cond
+  return _ryh5_cond
 end
-local _pkwb_let
+local _vjbo_let
 do
   local period = 0.5
   local count__c40__period__c41__ = 2
   local volatility = 0.32
-  local _lxoa_call = math["sqrt"](period)
-  local _94u8_call = math["exp"]((volatility * _lxoa_call))
-  local u = _94u8_call
+  local _hqr5_call = math["sqrt"](period)
+  local _3hmz_call = math["exp"]((volatility * _hqr5_call))
+  local u = _3hmz_call
   local d = (1 / u)
-  local _epia_call = math["exp"]((0.5 * 0.1))
-  local r = _epia_call
+  local _v6wh_call = math["exp"]((0.5 * 0.1))
+  local r = _v6wh_call
   local dividend = 1
   local PV__c40__dividend__c41__ = (dividend / r)
   local price_0 = 70
   local price_0__c45__PV__c40__dividend__c41__ = (price_0 - PV__c40__dividend__c41__)
   local p0 = price_0__c45__PV__c40__dividend__c41__
   -- ::LINE_65_COLUMN_3::
-  local _6zpc_call = tree(p0,u,3)
-  local _t1pw_call = draw(_6zpc_call)
-  local _mnmu_call = print(_t1pw_call)
-  local _cehk_call = print(List(1,2,3,4))
-  _pkwb_let = _cehk_call
+  local _oizh_call = tree(p0,u,3)
+  local _p2xy_call = draw(_oizh_call)
+  local _1q8j_call = print(_p2xy_call)
+  local _4dfl_call = print(List(1,2,3,4))
+  _vjbo_let = _4dfl_call
 end
 
 return _ENV
